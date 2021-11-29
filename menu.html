@@ -12,7 +12,7 @@
 </html>
 <script>
     let key="1"
-    let url=`https://www.themealdb.com/api.php?ref=apilist.fun`
+    let url=`https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast`
     async function getfoodmenu(){
         let response=await fetch(url)
         let data=await response.json()
