@@ -5,18 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #wall{
+            display: grid;
+            grid-template-columns: repeat(4,20%);
+            grid-gap: 5%;
+            margin-left: 5%;
+        }
+        img{
+            width: 200px;
+            height: 150px;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="wall"></div>
 </body>
 </html>
 <script>
     let key="1"
     let url=`https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast`
-    async function getfoodmenu(){
-        let response=await fetch(url)
-        let data=await response.json()
-        console.log(data)
+    let wall=document.getElementById("wall")
+    async function getproducts(){
+        
+        
+        const response=await fetch(url)
+        const  data=await response.json()
+      
+        appendProducts(data)
+      
     }
-    getfoodmenu()
+  function appendProducts(products){
+ products.forEach(function(product){
+     let main=document.createElement("div")
+     let img=document.createElement("img")
+     img.src=product.strMealThumb
+     main .append(img)
+     wall.append(main)
+ })
+  }
+  getproducts()
 </script>
